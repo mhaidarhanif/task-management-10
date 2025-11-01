@@ -3,19 +3,8 @@ import { setupCounter } from "./counter.ts";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="/typescript.svg" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
+    <h1>JavaScript Bundler with Tailwind CSS</h1>
+    <button class="bg-green-300 p-2 rounded" id="counter" type="button"></button>
   </div>
 `;
 
