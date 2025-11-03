@@ -10,7 +10,7 @@ export function Tasks() {
       <h2>Tasks</h2>
       <ul>
         {dataTasks.map((task) => (
-          <TaskItem title={task.title} isDone={task.isDone} />
+          <TaskItem key={task.id} title={task.title} isDone={task.isDone} />
         ))}
       </ul>
     </div>
