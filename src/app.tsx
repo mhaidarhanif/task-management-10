@@ -2,9 +2,11 @@ import { Tasks } from "./tasks";
 
 export function App() {
   return (
-    <div>
-      <h1>Task Management</h1>
-      <Tasks />
+    <div className="app">
+      <main>
+        <h1 className="app-title">Task Management</h1>
+        <Tasks />
+      </main>
     </div>
   );
 }
