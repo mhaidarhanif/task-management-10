@@ -7,6 +7,7 @@ export function App() {
         <h1 className="my-4 text-2xl font-bold text-sky-700">
           Task Management
         </h1>
+
         <Tasks />
       </main>
     </div>

@@ -28,6 +28,10 @@ export function Tasks() {
 }
 
 export function TaskItem({ task }: { task: Task }) {
+  function handleDelete() {
+    console.log("Deleted");
+  }
+
   return (
     <section className="flex justify-between gap-4 rounded-lg bg-sky-100 p-4">
       <div>
@@ -39,7 +43,7 @@ export function TaskItem({ task }: { task: Task }) {
           <EyeIcon className="size-3" />
           <span className="text-xs">View</span>
         </Button>
-        <Button variant="destructive" size="xs">
+        <Button variant="destructive" size="xs" onClick={handleDelete}>
           <TrashIcon className="size-3" />
           <span className="text-xs">Delete</span>
         </Button>
