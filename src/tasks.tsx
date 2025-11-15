@@ -16,22 +16,28 @@ const dataTasks: Tasks = [
 ];
 
 export function Tasks() {
+  function handleDelete() {
+    console.log("Deleted");
+  }
+
   return (
     <ul className="flex flex-col gap-4">
       {dataTasks.map((task) => (
         <li key={task.id}>
-          <TaskItem task={task} />
+          <TaskItem task={task} handleDelete={handleDelete} />
         </li>
       ))}
     </ul>
   );
 }
 
-export function TaskItem({ task }: { task: Task }) {
-  function handleDelete() {
-    console.log("Deleted");
-  }
-
+export function TaskItem({
+  task,
+  handleDelete,
+}: {
+  task: Task;
+  handleDelete: () => void;
+}) {
   return (
     <section className="flex justify-between gap-4 rounded-lg bg-sky-100 p-4">
       <div>
