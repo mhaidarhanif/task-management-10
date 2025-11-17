@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { EyeIcon, TrashIcon } from "lucide-react";
 import { useState } from "react";
-import { type Task, type Tasks } from "@/modules/task/schema";
+import { TaskSchema, type Task, type Tasks } from "@/modules/task/schema";
 
 const initialDataTasks: Tasks = [
   { id: 1, title: "Breakfast", isDone: true },
@@ -25,16 +25,19 @@ export function Tasks() {
 
     const formData = new FormData(event.currentTarget);
 
-    const title = formData.get("title")?.toString();
-    if (!title) return null;
-
     const newId = tasks.length > 0 ? tasks[tasks.length - 1].id + 1 : 1;
 
-    const newTask: Task = {
+    const newTask = {
       id: newId,
-      title,
+      title: formData.get("title")?.toString().trim() || "",
       isDone: false,
     };
+
+    const result = TaskSchema.safeParse(newTask);
+    if (!result.success) {
+      alert("New task data invalid");
+      return null;
+    }
 
     const updatedTasks: Tasks = [...tasks, newTask];
 
@@ -48,7 +51,7 @@ export function Tasks() {
       <form method="post" onSubmit={handleCreate} className="space-y-2">
         <div className="space-y-2">
           <Label htmlFor="title">Title:</Label>
-          <Input id="title" type="text" name="title" />
+          <Input id="title" type="text" name="title" required />
         </div>
         <Button type="submit">Create Task</Button>
       </form>
