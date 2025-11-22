@@ -4,6 +4,7 @@ import { Label } from "@/components/ui/label";
 import { EyeIcon, TrashIcon } from "lucide-react";
 import { useState } from "react";
 import { TaskSchema, type Task, type Tasks } from "@/modules/task/schema";
+import { Link } from "react-router";
 
 const initialDataTasks: Tasks = [
   { id: 1, title: "Breakfast", isDone: true },
@@ -81,9 +82,11 @@ export function TaskItem({
         <p>{task.isDone ? "✅ Done" : "📝 Todo"}</p>
       </div>
       <div className="flex gap-2">
-        <Button size="xs">
-          <EyeIcon className="size-3" />
-          <span className="text-xs">View</span>
+        <Button asChild size="xs">
+          <Link to={`/tasks/${task.id}`}>
+            <EyeIcon className="size-3" />
+            <span className="text-xs">View</span>
+          </Link>
         </Button>
         <Button variant="destructive" size="xs" onClick={handleDelete}>
           <TrashIcon className="size-3" />
